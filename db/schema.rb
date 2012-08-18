@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818202420) do
+ActiveRecord::Schema.define(:version => 20120818212052) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "timezone"
+    t.string   "location"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.integer  "fb_event_id", :limit => 8
+  end
+
+  add_index "events", ["location"], :name => "index_events_on_location"
+  add_index "events", ["name"], :name => "index_events_on_name", :unique => true
+
+  create_table "user_events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "rsvp_status"
+    t.string   "teaser_users"
+    t.integer  "num_friends_attending"
+    t.integer  "num_friends_maybe"
+    t.integer  "num_friends_invited"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "user_events", ["event_id"], :name => "index_user_events_on_event_id"
+  add_index "user_events", ["num_friends_attending"], :name => "index_user_events_on_num_friends_attending"
+  add_index "user_events", ["num_friends_invited"], :name => "index_user_events_on_num_friends_invited"
+  add_index "user_events", ["num_friends_maybe"], :name => "index_user_events_on_num_friends_maybe"
+  add_index "user_events", ["user_id", "event_id"], :name => "index_user_events_on_user_id_and_event_id", :unique => true
+  add_index "user_events", ["user_id"], :name => "index_user_events_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "token"
