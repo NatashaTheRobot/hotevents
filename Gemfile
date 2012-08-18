@@ -4,7 +4,7 @@ gem 'rails', '3.2.7'
 gem 'pg', '0.14.0'
 gem 'haml', '3.1.6'
 gem 'bootstrap-sass', '2.0.0'
-
+gem "koala"
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
