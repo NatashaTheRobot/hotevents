@@ -27,9 +27,9 @@ module FacebookEvents
 			@graph = Koala::Facebook::API.new(oauth_token)
 		end
 
-		def get_user_events user_id
+		def get_user_events user_id , max_events = 50
 			#TODO: if there are more than 500, keep looping through
-			@graph.get_connections( user_id , "events?since=0&limit=500" )
+			@graph.get_connections( user_id , "events?since=0&limit=#{max_events}" )
 		end
 
 		def get_multiple_users_events user_ids
@@ -57,7 +57,7 @@ module FacebookEvents
 		end
 
 		def get_user_friends user_id
-			@graph.get_object("me/friends")
+			@graph.get_object("#{user_id}/friends")
 		end
 
 		def get_user_friend_ids user_id
@@ -71,19 +71,41 @@ module FacebookEvents
 			@graph.get_connections("me", "likes")
 		end
 	end
+
+	class DirtyFacebook
+		def initialize
+			@user_id = "7403766"
+			@token =  "AAAEz4FZCLciABAAVZCD4BslHy5KfF2hotWSv0MzDX8QIJmEE6So4WPNxrOoJ6I4pY7xPQCqckYj4SXDH6L41ZBrGE2hrjwvZA68oK2NJVQZDZD"
+		end
+		def check_rsvps_for_friends rsvps , friends
+			matched_friends = []
+			rsvps.each{|rsvp| matched_friends.push(rsvp['id']) if friends.include? rsvp['id']  }
+			matched_friends
+		end
+		def get_event_stubs num_stubs
+			@fb = FacebookEvents::FacebookRequests.new( @token )
+			#get Nick's friends
+			friend_ids = @fb.get_user_friend_ids @user_id
+			#get Nick's events
+			events = @fb.get_user_events @user_id , num_stubs
+			#get RSVPs for the events
+			events.each{|event| 
+				rsvps = @fb.get_all_event_rsvps event["id"]
+				friends = self.check_rsvps_for_friends rsvps[:attending] , friend_ids
+				friends = friends + self.check_rsvps_for_friends(rsvps[:maybe] , friend_ids) if friends.count < 5
+				friends = friends + self.check_rsvps_for_friends(rsvps[:invited] , friend_ids) if friends.count < 5
+				event["friends"] = friends
+				event['friends'] = friends[0..4] if friends.count > 5
+				#add teaser string based on # of friends
+			}
+			return events
+		end
+	end
 end
 
-user_id = "7403766"
-token =  "AAAEz4FZCLciABAAVZCD4BslHy5KfF2hotWSv0MzDX8QIJmEE6So4WPNxrOoJ6I4pY7xPQCqckYj4SXDH6L41ZBrGE2hrjwvZA68oK2NJVQZDZD"
-@fb = FacebookEvents::FacebookRequests.new( token )
-#events = @fb.get_user_events user_id
-#p @fb.get_user_friend_ids user_id
-friend_ids = @fb.get_user_friend_ids user_id
-events = @fb.get_multiple_users_events( friend_ids[0..5] )
-p events.count
-#p events[0]
-rsvps = @fb.get_all_event_rsvps events[0]["id"]
-p rsvps[:attending].count
+
+@fb = FacebookEvents::DirtyFacebook.new
+p @fb.get_event_stubs 60
 
 #crawl through my events
 #get friends
