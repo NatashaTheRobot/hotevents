@@ -74,7 +74,7 @@ module FacebookEvents
 end
 
 user_id = "7403766"
-token =  "AAACEdEose0cBADRnW7jUN3KDirzuIQo3EydturWe3H2R37fXX21Xi4gDZCfCRDDW1ivMrgn4ECbLUsmyAtZALLase65cbjyeBwFZAFTjwZDZD"
+token =  "AAAEz4FZCLciABAAVZCD4BslHy5KfF2hotWSv0MzDX8QIJmEE6So4WPNxrOoJ6I4pY7xPQCqckYj4SXDH6L41ZBrGE2hrjwvZA68oK2NJVQZDZD"
 @fb = FacebookEvents::FacebookRequests.new( token )
 #events = @fb.get_user_events user_id
 #p @fb.get_user_friend_ids user_id
