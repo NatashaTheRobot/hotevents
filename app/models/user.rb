@@ -15,6 +15,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :fb_id, :first_name, :last_name, :token
+  has_many :events, through: :user_events
+  has_many :user_events
   
   def self.create_with_omniauth(fb_info)
     user = User.new
