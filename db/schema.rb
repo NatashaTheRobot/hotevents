@@ -11,6 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120818202420) do
+
+  create_table "users", :force => true do |t|
+    t.string   "token"
+    t.integer  "expires_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "fb_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["fb_id"], :name => "index_users_on_fb_id", :unique => true
+  add_index "users", ["token"], :name => "index_users_on_token", :unique => true
 
 end
