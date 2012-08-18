@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  token      :string(255)
+#  expires_at :integer
+#  first_name :string(255)
+#  last_name  :string(255)
+#  fb_id      :integer
+#  email      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class User < ActiveRecord::Base
   attr_accessible :email, :fb_id, :first_name, :last_name, :token
   
