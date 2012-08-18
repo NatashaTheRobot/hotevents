@@ -3,6 +3,7 @@ source :rubygems
 gem 'rails', '3.2.7'
 gem 'pg', '0.14.0'
 gem 'haml', '3.1.6'
+gem 'bootstrap-sass', '2.0.0'
 
 
 group :development, :test do
