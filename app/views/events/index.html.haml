@@ -1,4 +1,6 @@
 %body
+  - @events.each do |user_event|
+    = user_event.event
   #topborder
   .container{:style => "margin-top:20px;"}
     .row
@@ -6,7 +8,7 @@
         .eventbox
           %a{:href => "http://www.facebook.com/events/425496454169159/", :target => "_blank"}
             .eventphoto
-              %img{:src => "images/fbevent.jpg"}
+              %img{:src => "fbevent.jpg"}
             .time
               Wednesday, August 22, 2012
             .location
@@ -19,9 +21,9 @@
               Friends
               %ul
                 %li
-                  %img{:src => "images/natalie.jpg"}/
+                  %img{:src => "natalie.jpg"}
                 %li
-                  %img{:src => "images/cathy.jpg"}/
+                  %img{:src => "cathy.jpg"}
             .invitecount
               Guest List: 1048
       .span2
