@@ -1,0 +1,26 @@
+%body
+  .container{:style => "margin-top:20px;"}
+  - @events.flatten.each_slice(4) do |events|
+    .row
+      - events.each do |event|
+        .span3
+          .eventbox
+            %a{:href => "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"}
+              .eventphoto
+                %img{:src => get_facebook_image(event["id"], 'normal')}
+              .time
+                = date_from_facebook(event["start_time"])
+              .location
+                = event["location"]
+                %br
+                  %span
+                    3087 West 12 Mile Rd, Berkley
+                    %br Michigan 48072
+              .friends
+                Friends
+                %ul
+                - event["friends"].each do |friend_id|
+                  %li
+                    %img{:src => get_facebook_image(friend_id), :width => "30px"}
+              .invitecount
+                Guest List: #{rand(100) + 1}

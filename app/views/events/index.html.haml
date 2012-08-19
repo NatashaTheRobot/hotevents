@@ -8,20 +8,31 @@
             %a{:href => "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"}
               .eventphoto
                 %img{:src => get_facebook_image(event["id"], 'large')}
-              .time
-                = date_from_facebook(event["start_time"])
               .location
                 = event["location"]
                 %br
                   %span
                     3087 West 12 Mile Rd, Berkley
                     %br Michigan 48072
-              - unless event['friends'].nil?
-                .friends
-                  Friends
-                  %ul
-                  - event["friends"].each do |friend_id|
-                    %li
-                      %img{:src => get_facebook_image(friend_id), :width => "30px"}
-              .invitecount
-                Guest List: #{rand(100) + 1}      
+              .time
+                = date_from_facebook(event["start_time"]) 
+              .divider
+              .actions
+                %ul
+                  %li #{link_to 'like'}
+                  %li #{link_to 'share'}
+                  %li #{link_to 'rsvp'}
+              .divider
+              .social
+                - unless event['friends'].nil?
+                  .friends
+                    Friends
+                    %ul
+                    - event["friends"].each do |friend_id|
+                      %li
+                        %img{:src => get_facebook_image(friend_id), :width => "30px"}
+                .countlink
+                  .count
+                    Guest List: #{rand(100) + 1}
+                  .link
+                    = link_to "Event to FB", "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"        
