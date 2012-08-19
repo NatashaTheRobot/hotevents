@@ -1,0 +1,10 @@
+<div class=container id=greeting>	
+<div style="float:left;"><h3>Hello!  Hotevents shows you what's hot!</h3></div>
+<div style="float:right;">
+  <% if current_user %>
+    <%= "Hello #{current_user.first_name}"%>
+  <% else %>
+      <%= link_to "Login with Facebook", '/auth/facebook', class: "btn btn-large btn-primary"  %>
+    <% end %>
+    </div>
+</div>
