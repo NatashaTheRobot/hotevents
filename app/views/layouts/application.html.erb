@@ -9,11 +9,10 @@
   </head>
   <body>
      <%= render 'layouts/header' %>
-     <div id="topborder">
-       <div class="container" style="margin-top:40px">
-         <%= yield %>
-         <%= render 'layouts/footer' %>
-       </div>
-     </div>   
+     <div id="topborder"></div>
+     <div class="container" style="margin-top:-20px">
+       <%= yield %>
+       <%= render 'layouts/footer' %>
+     </div> 
   </body>
 </html>
