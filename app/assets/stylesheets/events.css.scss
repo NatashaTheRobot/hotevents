@@ -35,7 +35,7 @@ font-family:'helvetica neue', sans-serif; font-size:0.9em;}
 .eventbox > .actions { background:#f4f4f4; width:auto; height:30px; font-size:0.95em; }
 .eventbox > .actions ul { list-style: none; margin:auto; padding-top:4px; padding-left:0; width:90%; }
 .eventbox > .actions li { padding-right:20px;}
-.eventbox > .actions a { font-weight:500; }
+.eventbox > .actions a { font-weight:500; color: #7a95ba;}
 
 .eventbox > .divider { border-top:1px solid #ededed; border-bottom:1px solid #fff; }
 .eventbox > .social { background:#f4f4f4; width:auto; padding-top:5px; padding-bottom:20px; }	
@@ -43,5 +43,9 @@ font-family:'helvetica neue', sans-serif; font-size:0.9em;}
 .eventbox > .social > .countlink { width:90%; margin:auto; }		
 .eventbox .count { float:left; width:45%;}
 .eventbox .link { float:right; 
-	width:45%; }
-.eventbox .link a { float:right;}
+	width:45%;  }
+.eventbox .link a { float:right;color: #7a95ba; }
+.countlink {
+	.link { 
+	}
+}
