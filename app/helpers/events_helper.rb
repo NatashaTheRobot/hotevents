@@ -5,6 +5,6 @@ module EventsHelper
 
 	def date_from_facebook date_str
 		#ISO-8601 
-		Time.parse date_str
+		Time.parse(date_str).strftime("%A, %B %d, %Y")
 	end
 end
