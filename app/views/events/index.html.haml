@@ -1,9 +1,9 @@
 %body
   .container{:style => "margin-top:20px;"}
-  - @events.flatten.each_slice(5) do |events|
+  - @events.flatten.each_slice(4) do |events|
     .row
       - events.each do |event|
-        .span2
+        .span3
           .eventbox
             %a{:href => "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"}
               .eventphoto
