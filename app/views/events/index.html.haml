@@ -20,7 +20,9 @@
               .actions
                 %ul
                   %li #{link_to 'like'}
-                  %li #{link_to 'share'}
+                  %li 
+                    - 338513749570080
+                    = link_to 'share', "http://www.facebook.com/dialog/feed?app_id=338513749570080&link=http://developers.facebook.com/docs/reference/dialogs/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Using%20Dialogs%20to%20interact%20with%20users.&redirect_uri=http://localhost:3000"
                   %li #{link_to 'rsvp'}
               .divider
               .social
