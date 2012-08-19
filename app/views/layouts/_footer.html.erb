@@ -3,3 +3,13 @@
     Events ©2012
   </small>
 </footer>
+<div pub-key="<%= @publish_key %>" sub-key="<%= @subscribe_key %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+<script type='text/javascript'>
+PUBNUB.subscribe({
+    channel : '<%= @publnub_channel %>'
+}, function(message) {
+    // Show Message
+    alert(message['text']);
+} );
+</script>
