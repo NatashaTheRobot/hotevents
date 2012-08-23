@@ -11,9 +11,6 @@
               .location
                 = event["location"]
                 %br
-                  %span
-                    3087 West 12 Mile Rd, Berkley
-                    %br Michigan 48072
               .time
                 = date_from_facebook(event["start_time"]) 
               .divider
@@ -37,4 +34,4 @@
                   .count
                     Guest List: #{rand(100) + 1}
                   .link
-                    = link_to "Event to FB", "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"        
+                    = link_to "Event on FB", "http://www.facebook.com/events/#{event["id"]}", :target => "_blank"        

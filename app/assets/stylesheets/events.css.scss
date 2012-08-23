@@ -27,9 +27,8 @@ font-family:'helvetica neue', sans-serif; font-size:0.9em;}
 .eventbox .eventphoto { height:150px; width:90%; margin:auto; overflow:hidden; }
 .eventbox .eventphoto img { margin-top:10px; }
 	
-.eventbox .location { margin:auto; font-size:0.95em; width:90%; }
-.eventbox .location span { display:none; }
-.eventbox .location:hover span { display:none; color:#aaa; font-size:0.85em;}
+.eventbox .location { margin:3px auto; font-size:1em;  font-weight:bold; width:90%; }
+.eventbox .location:hover { text-decoration:none; }
 .eventbox .time { margin:2px auto; font-size:0.82em; color:#aaa; width:90%; padding-bottom:5px;}
 
 .eventbox > .actions { background:#f4f4f4; width:auto; height:30px; font-size:0.95em; }

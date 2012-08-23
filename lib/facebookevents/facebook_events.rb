@@ -113,8 +113,8 @@ module FacebookEvents
 
 	class DirtyFacebook
 		def initialize
-			@user_id = "7403766"
-			@token =  "AAACEdEose0cBACytiDeHvudX9qMi5rpZCURDrZBwngvMFGL1mvbHD66ovXZBZApBIr9B3KbKbbFSaoUoeEyZCqhaviZCMd31MWubsVZCUSIKgZDZD"
+			@user_id = "2913363"
+			@token =  "AAACEdEose0cBAJbybW8lJQjlHRKwRLFEydYS1KQSGpCAh4NyEvKZCZBIcln4pfpi92pgTdz9yJsj5rxlRgj8RwuFpWZAMFEfZBGM9e8mvwZDZD"
 		end
 		def check_rsvps_for_friends rsvps , friends , max_friends = 5
 			matched_friends = []
